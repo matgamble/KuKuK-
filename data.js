@@ -19,6 +19,7 @@ window.TERMINE = [
 // Fotos und Videos: Dateien liegen im Ordner "media/".
 // typ: "foto" oder "video"; bei Videos optional poster: "media/poster.jpg"
 window.MEDIEN = [
+  { typ: "video", datei: "media/kukuk-vorstellung.mp4", poster: "media/kukuk-vorstellung-poster.jpg", text: "KuKuK stellt sich vor" },
   // { typ: "foto", datei: "media/musik-01.jpg", text: "Klangschalen entdecken" },
   // { typ: "video", datei: "media/tanz.mp4", text: "Tanz-Einheit" },
 ];
