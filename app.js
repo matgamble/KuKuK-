@@ -34,8 +34,9 @@
     g.className = 'gallery';
     g.innerHTML = medien.map(function (m, i) {
       if (m.typ === 'video') {
-        return '<figure><video controls preload="metadata" playsinline' + (m.poster ? ' poster="' + esc(m.poster) + '"' : '') +
+        return '<figure class="vid"><video controls preload="metadata" playsinline' + (m.poster ? ' poster="' + esc(m.poster) + '"' : '') +
           '><source src="' + esc(m.datei) + '" type="video/mp4"></video>' +
+          '<button type="button" class="fs-btn">⛶ Vollbild</button>' +
           (m.text ? '<figcaption>' + esc(m.text) + '</figcaption>' : '') + '</figure>';
       }
       return '<figure><button type="button" class="thumb" data-i="' + i + '"><img loading="lazy" src="' + esc(m.datei) +
@@ -55,6 +56,15 @@
   }
   function close() { lb.hidden = true; content.innerHTML = ''; }
   g.addEventListener('click', function (e) {
+    var f = e.target.closest('.fs-btn');
+    if (f) {
+      var v = f.closest('figure').querySelector('video');
+      if (v.requestFullscreen) v.requestFullscreen();
+      else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+      else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+      v.play();
+      return;
+    }
     var b = e.target.closest('.thumb');
     if (b) open(+b.dataset.i);
   });
