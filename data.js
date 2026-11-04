@@ -2,6 +2,17 @@
 
 // Termine: datum im Format "2026-11-20", zeit und ort optional.
 window.TERMINE = [
+  { datum: "2026-11-05", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-11-12", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-11-19", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-11-25", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-11-26", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-02", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-03", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-09", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-10", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-16", zeit: "08:45", titel: "KuKuK-Einheit" },
+  { datum: "2026-12-17", zeit: "08:45", titel: "KuKuK-Einheit" },
   // { datum: "2026-11-20", zeit: "09:30–11:00", titel: "Musik-Einheit", beschreibung: "Mit Anna (Musikpädagogin)", ort: "Turnhalle" },
 ];
 
