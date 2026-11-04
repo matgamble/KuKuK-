@@ -34,8 +34,8 @@
     g.className = 'gallery';
     g.innerHTML = medien.map(function (m, i) {
       if (m.typ === 'video') {
-        return '<figure class="vid"><video controls preload="metadata" playsinline' + (m.poster ? ' poster="' + esc(m.poster) + '"' : '') +
-          '><source src="' + esc(m.datei) + '" type="video/mp4"></video>' +
+        return '<figure class="vid"><div class="vid-wrap"><video controls preload="metadata" playsinline' + (m.poster ? ' poster="' + esc(m.poster) + '"' : '') +
+          '><source src="' + esc(m.datei) + '" type="video/mp4"></video><button type="button" class="play-big" aria-label="Video abspielen">▶</button></div>' +
           '<button type="button" class="fs-btn">⛶ Vollbild</button>' +
           (m.text ? '<figcaption>' + esc(m.text) + '</figcaption>' : '') + '</figure>';
       }
@@ -56,6 +56,8 @@
   }
   function close() { lb.hidden = true; content.innerHTML = ''; }
   g.addEventListener('click', function (e) {
+    var pb = e.target.closest('.play-big');
+    if (pb) { pb.closest('figure').querySelector('video').play(); return; }
     var f = e.target.closest('.fs-btn');
     if (f) {
       var v = f.closest('figure').querySelector('video');
@@ -67,6 +69,11 @@
     }
     var b = e.target.closest('.thumb');
     if (b) open(+b.dataset.i);
+  });
+  g.querySelectorAll('video').forEach(function (v) {
+    var hide = function () { v.parentNode.classList.add('playing'); };
+    v.addEventListener('play', hide);
+    v.addEventListener('pause', function () { if (v.currentTime === 0) v.parentNode.classList.remove('playing'); });
   });
   lb.addEventListener('click', function (e) {
     if (e.target === lb || e.target.classList.contains('close')) close();
